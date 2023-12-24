@@ -1,7 +1,8 @@
 <?php
 
-define ('HOST', 'mysql:host=localhost;');
+define ('HOST', 'localhost');
 define ('DBNAME', 'quizz');
 define ('USERNAME', 'root');
 define ('PASSWORD', '');
-define ("Connection",  Database::connect());
+// define ("Connection",  Database::connect());
+?>

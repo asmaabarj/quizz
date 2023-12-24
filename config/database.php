@@ -2,15 +2,16 @@
 require_once 'config.php';
 class Database
 {
-    public static function connect()
-    {
+    protected $db;
+
+    public function connect() {
         try {
-            $pdo = new PDO (HOST . DBNAME, USERNAME, PASSWORD);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
+            $this->db = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, USERNAME, PASSWORD);
+            return $this->db;
         } catch (PDOException $e) {
-            echo "error  " . $e->getMessage();
+            echo $e->getMessage();
         }
     }
 }
 
+?>
