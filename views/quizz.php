@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once("../controller/Quizzdisplay.php");
 
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }
 }
-$randomQuestion = $Questions[array_rand($Questions)];
 
 ?>
 
@@ -31,7 +29,59 @@ $randomQuestion = $Questions[array_rand($Questions)];
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Ephesis&family=Great+Vibes&family=Irish+Grover&family=Lora:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;1,300&family=Playfair+Display&family=Poppins:ital,wght@0,200;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Pridi:wght@200&family=Red+Rose:wght@500;600;700&family=Roboto+Slab:wght@500;700&display=swap');
-
+        /* .bobriya{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -30%);
+        } */
+        .progressbar {
+            
+    display: flex;
+ justify-content: center;
+}
+.progressbar li {
+    list-style-type: none;
+    width: 6rem;
+    float: center;
+    font-size: 10px;
+    position: relative;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+.progressbar li:before {
+    width: 10px;
+    height: 10px;
+    content: '';
+    background-color: #7d7d7d;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    transition: all .8s;
+}
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 5px;
+    left: -50%;
+    z-index: -1;
+    transition: all .8s;
+}
+.progressbar li:first-child:after {
+    content: none;
+}
+.progressbar li.active:before {
+    border-color: orange;
+    background-color: orange;
+    transition: all .8s;
+}
+.progressbar li.active:after {
+    background-color: #5D3587;
+    transition: all .8s;
+}
         .animated-outline {
             animation: changeOutlineColor 3s infinite;
         }
@@ -65,12 +115,37 @@ $randomQuestion = $Questions[array_rand($Questions)];
     </style>
 </head>
 
-<body class="">
-    <img class="w-[70px] h-[50px] " src="images/awslogo.png" alt="">
+<body class="bobriya">
 
+    <img class="w-[70px] h-[50px] " src="images/awslogo.png" alt="">
+    <div class="bobriya">
+    <div class="container">
+        <div class="progress">
+            <div class="percent"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="">
+                    <ul id="progress-bar" class="progressbar">
+                        <li class="active">Question 1</li>
+                        <li>Question 2</li>
+                        <li>Question 3</li>
+                        <li>Question 4</li>
+                        <li>Question 5</li>
+                        <li>Question 6</li>
+                        <li>Question 7</li>
+                        <li>Question 8</li>
+                        <li>Question 9</li>
+                        <li>Question 10</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="flex items-center justify-center">
-        <form action="" method="post" class="backForm p-8 rounded-lg w-[80%] h-[75vh] shadow-md">
-            <h1 style="font-family:red rose; " id="question" class=" text-white mt-6 w-[90%] m-auto">
+        <form action="" method="post" class="backForm p-8 rounded-lg w-[80%] h-[70vh] shadow-md">
+            <h1 class="text-white">Theme : <?= $randomQuestion->getTheme_name() ?></h1>
+            <h1 style="font-family:red rose; " id="question" class="mt-10 text-white mt-10 w-[90%] m-auto">
               
             </h1>
 
@@ -86,7 +161,7 @@ $randomQuestion = $Questions[array_rand($Questions)];
             </div>
         </form>
     </section>
-
+    </div>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         var questionElement = document.getElementById('question');

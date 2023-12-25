@@ -5,6 +5,7 @@ class Question {
     public $id_question;
     public $content_question;
     public $theme_id;
+    public $theme_name;
 
   
     public function __construct(){
@@ -33,6 +34,13 @@ class Question {
 
     public function setThemeId($theme_id) {
         $this->theme_id = $theme_id;
+    }
+    public function getTheme_name() {
+        return $this->theme_name;
+    }
+
+    public function setTheme_name($theme_name) {
+        $this->theme_name = $theme_name;
     }
 
 }

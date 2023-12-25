@@ -1,12 +1,12 @@
 <?php
 
+use LDAP\Result;
 
-class Reponse extends Database{
+class Reponse{
     private $id_rep;
     private $content_rep;
 
     private $id_question;
-protected $db;
     private $cas_rep;
 
     private $answer_desc;
@@ -31,7 +31,7 @@ protected $db;
     public function getAnswerDesc(){
         return $this->answer_desc;
     }
-    public function setIdRep($id_rep) {
+     public function setIdRep($id_rep) {
         $this->id_rep = $id_rep;
     }
 
