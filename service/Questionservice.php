@@ -9,7 +9,8 @@ class QuestionService extends Database {
         $stmt = $db->prepare(" SELECT *, RAND() as ordering
         FROM question
         ORDER by ordering;");
-       
+        
+        
         $stmt->execute();
         $Results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $questions = array();

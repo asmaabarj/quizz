@@ -1,6 +1,5 @@
 <?php
 
-use LDAP\Result;
 
 class Reponse extends Database{
     private $id_rep;

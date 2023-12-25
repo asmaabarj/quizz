@@ -9,8 +9,8 @@ class Question {
   
     public function __construct(){
 
-
     }
+    
     public function getIdQuestion() {
         return $this->id_question;
     }
@@ -34,11 +34,6 @@ class Question {
     public function setThemeId($theme_id) {
         $this->theme_id = $theme_id;
     }
-
-   
- 
-
-
 
 }
 ?>

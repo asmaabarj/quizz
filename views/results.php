@@ -8,6 +8,9 @@
 
 </head>
 <body>
+    <?php
+    session_start();
+    unset($_SESSION['answers']);?>
     
 </body>
 </html>

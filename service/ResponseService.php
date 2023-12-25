@@ -13,7 +13,7 @@ class ResponseService extends Database{
     
         $Results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $Repons = array();
-    
+           
         foreach ($Results as $Result) {
             $reponse = new Reponse();
             $reponse->setIdRep($Result["id_rep"]);
