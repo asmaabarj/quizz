@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="style.css">
     
 </head>
-
 <body>
   <div class="container">
     <div class="carousel">
@@ -21,8 +20,9 @@
     </div>
   </div>
   <img style="width: 150px; height: 130px;margin-top: 6rem;" src="images/awslogo.png" alt="">
+  <form action="quizz.php" method="post">
   <div>
-    <input type="text" placeholder="USER NAME" style="
+    <input type="text" name="username" placeholder="USER NAME" style="
 height: 2rem;
 padding: 10px;
 text-align: center;
@@ -33,7 +33,8 @@ text-align: center;
   width: 204px;">
   </div>
   <div>
-    <a href="quizz.php"><button style="margin-top: 10px; 
+
+<button type="submit" style="margin-top: 10px; 
   background-color: transparent;
   color: white;
   width: 14rem;
@@ -46,10 +47,11 @@ text-align: center;
         onmouseover="this.style.backgroundColor='orange'; this.style.color='black';"
         onmouseout="this.style.backgroundColor='transparent'; this.style.color='orange';">
         START
-      </button></a>
+      </button>
 
 
   </div>
+  </form>
   <div style="color: aliceblue; margin-top: 115px; font-size: 12px;">
     <p>© 2023, Amazon Web Services, Inc. or its affiliates. All rights reserved | aws.amazon.com |</p>
 </body>

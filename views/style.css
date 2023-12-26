@@ -85,3 +85,12 @@ body {
     filter:drop-shadow(-5px 5px 17px #85786e37);
 
 }
+.bacForm {
+
+  filter:drop-shadow(-20px 20px 20px rgb(3, 6, 23));
+}
+.baorm {
+  background-color: rgb(2, 4, 23);
+  filter:drop-shadow(0px 5px 17px #02001b99);
+
+}

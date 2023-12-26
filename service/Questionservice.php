@@ -29,15 +29,6 @@ class QuestionService extends Database {
 
         return $questions;
     }
-    public function getRandomQuestion() {
-        $questions = $this->ShowQuestion();
-        shuffle($questions);
-        return $questions[0]; 
-    }
-
-    public function getTotalQuestionCount() {
-        $questions = $this->ShowQuestion();
-        return count($questions);
-    }
+    
 }
 ?>
