@@ -1,4 +1,4 @@
-#quizz
+
 
 
 Cette application sera une véritable banque de questions, permettant aux utilisateurs de tester et d'améliorer leurs compétences en matière de cloud computing.
