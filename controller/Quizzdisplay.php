@@ -21,34 +21,44 @@ if (isset($_POST['selectedAnswer'])) {
     if (count($_SESSION['answers']) === 10) {
         header('Location: results.php');
         exit();
-
     }
 }
 
+$questionNumber = count($_SESSION['answers']) + 1;
+$totalQuestions = 10;
+$progressPercentage = ($questionNumber / $totalQuestions) * 100;
 
-// Get all questions from the database
 
-// Shuffle the questions array
-shuffle($Questions);
 
-// Initialize session variable if not set
-if (!isset($_SESSION['asked_questions'])) {
-    $_SESSION['asked_questions'] = array();
+if (!isset($_SESSION['score'])) {
+    $_SESSION['score'] = 0;
 }
 
-// Display 10 questions
-$questionsToDisplay = array_slice($Questions, 0, 10);
+if (isset($_POST["selectedAnswer"])) {
 
-foreach ($questionsToDisplay as $randomQuestion) {
-    // Check if the question has already been asked
-    while (in_array($randomQuestion->getIdQuestion(), $_SESSION['asked_questions'])) {
-        $randomQuestion = $Questions[array_rand($Questions)];
+    $selectedAnswerId = isset($_POST['selectedAnswer']) ? $_POST['selectedAnswer'] : null;
+
+
+    if ($selectedAnswerId == 1) {
+        $_SESSION['score'] += 10;
+    } else {
+        $_SESSION['score'] += 0;
     }
-
-    // Add the question ID to the asked questions array
-    $_SESSION['asked_questions'][] = $randomQuestion->getIdQuestion();
-
-    // ... Rest of your existing code for displaying the question and answers ...
 }
+
+if (!isset($_SESSION['Resulte'])) {
+    $_SESSION['Resulte'] = array();
+}
+
+if (isset($_POST['selectedAnswer']) && $_POST['selectedAnswer'] == 0) {
+    $questionId = isset($_POST['questionId']) ? $_POST['questionId'] : null;
+
+    $resulteData = $reponse->correction($questionId);
+
+    $_SESSION['Resulte'][] = $resulteData;
+}
+
+
+
 
 ?>

@@ -2,7 +2,8 @@
 require_once("../config/database.php");
 require_once("../models/Question.php");
 
-class QuestionService extends Database {
+class QuestionService  {
+    use Database;
     protected $db;
     public function ShowQuestion() {
         $db = $this->connect();

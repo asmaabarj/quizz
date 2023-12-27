@@ -1,3 +1,9 @@
+<?php
+session_start();
+unset($_SESSION["answers"]);
+unset($_SESSION["score"]);
+unset($_SESSION["Resulte"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +12,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 <link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
   <div class="container">
     <div class="carousel">
@@ -20,9 +27,10 @@
     </div>
   </div>
   <img style="width: 150px; height: 130px;margin-top: 6rem;" src="images/awslogo.png" alt="">
+  
   <form action="quizz.php" method="post">
   <div>
-    <input type="text" name="username" placeholder="USER NAME" style="
+    <input type="text" name="username" placeholder="USER NAME" required="" style="
 height: 2rem;
 padding: 10px;
 text-align: center;
@@ -34,7 +42,7 @@ text-align: center;
   </div>
   <div>
 
-<button type="submit" style="margin-top: 10px; 
+<button type="submit" name="userstar" style="margin-top: 10px; 
   background-color: transparent;
   color: white;
   width: 14rem;
@@ -52,8 +60,10 @@ text-align: center;
 
   </div>
   </form>
-  <div style="color: aliceblue; margin-top: 115px; font-size: 12px;">
-    <p>© 2023, Amazon Web Services, Inc. or its affiliates. All rights reserved | aws.amazon.com |</p>
+  <div style=" position:absolute ;  bottom:1rem; margin-left:40rem; border: 1px solid orange; border-radius: 20px; height: 10px; width:10px;"></div>
+  <div style=" position:absolute ;  bottom:1rem; margin-left:41rem; border: 1px solid orange; border-radius: 20px; height: 10px; width:10px;"></div>
+  <div style=" position:absolute ;  bottom:1rem; margin-left:39rem; background-color:orange; border: 1px solid orange; border-radius: 20px; height: 10px; width:10px;"></div>
+
 </body>
 
 </html>

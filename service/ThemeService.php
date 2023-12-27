@@ -2,5 +2,7 @@
 require_once("../config/database.php");
 require_once("../models/Theme.php");
 
-class ThemeService extends Database {
+class ThemeService {
+    use Database;
+
 }

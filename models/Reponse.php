@@ -8,7 +8,7 @@ class Reponse{
 
     private $id_question;
     private $cas_rep;
-
+private $score;
     private $answer_desc;
     public function __construct(){
 
@@ -51,7 +51,12 @@ class Reponse{
         $this->answer_desc = $answer_desc;
     }
 
-
+    public function getScore(){
+        return $this->score;
+    }
+     public function setscore($score) {
+        $this->score = $score;
+    }
 
 
 }

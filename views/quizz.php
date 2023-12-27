@@ -1,5 +1,8 @@
 <?php
 require_once("../controller/Quizzdisplay.php");
+if (isset($_POST["userstar"])) {
+$_SESSION["username"] = $_POST["username"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -91,27 +94,24 @@ require_once("../controller/Quizzdisplay.php");
 </head>
 
 <body class="h-[100vh]">
-    <img class="w-[70px] h-[60px] " src="images/awslogo.png" alt="">         
-        <div class="mt-4 h-[10vh]">               
-                    <ul id="progress-bar" class="progressbar">
-                        <li class="active">Question 1</li>
-                        <li>Question 2</li>
-                        <li>Question 3</li>
-                        <li>Question 4</li>
-                        <li>Question 5</li>
-                        <li>Question 6</li>
-                        <li>Question 7</li>
-                        <li>Question 8</li>
-                        <li>Question 9</li>
-                        <li>Question 10</li>
-                    </ul>                      
-        </div>
+    <img class="w-[70px] h-[60px]" src="images/awslogo.png" alt="">
+    <div class="mt-4 h-[10vh]">
+        <ul id="progress-bar" class="progressbar">
+            <?php
+            for ($i = 1; $i <= $totalQuestions; $i++) {
+                $class = ($i == $questionNumber) ? 'active' : '';
+                echo "<li class='$class'>Question $i</li>";
+            }
+            ?>
+        </ul>
+    </div>
     <section class="flex items-center justify-center">
         <form action="" method="post" class="backForm p-8 rounded-lg w-[80%] h-[70vh] shadow-md">
             <h1 class="text-orange-300 absolute bottom-3 text-[14px] right-4 "> <?= $randomQuestion->getTheme_name() ?></h1>
             <div class="animated-outline absolute top-4 right-4 p-2 border-2 text-white rounded bacForm shadow-md">
-                Score : 
+                Score : <?= $_SESSION['score'] ?>
             </div>
+            <input type="hidden" name="questionId" value="<?= $randomQuestion->getIdQuestion() ?>">
             <button type="button" style="font-family:red rose; " name="questionss" id="question"  class="cursor-default text-white mt-10 w-[90%] m-auto">
                   <?= $randomQuestion->getContentQuestion() ?>
          
@@ -121,7 +121,8 @@ require_once("../controller/Quizzdisplay.php");
                 <?php
                 foreach ($reponses as $reponse):
                 ?>
-                    <button type="submit" name="selectedAnswer" value=""
+                    <!-- <input type="hidden" name="idanswer" value="<?= $reponse->getIdrep() ?>"> -->
+                    <button type="submit" name="selectedAnswer" value="<?= $reponse->getCasRep() ?>"
                         class="animated-outline text-center   rounded-[20px] h-[13vh] border-2 w-[47%] text-orange-500  hover:bg-orange-500 hover:text-black hover:font-bold focus:text-black focus:font-bold focus:bg-orange-500 active:text-black dark:text-orange-300 text-xs font-medium uppercase "><?= $reponse->getContent_rep() ?></button>
                 <?php
                 endforeach;
@@ -129,10 +130,9 @@ require_once("../controller/Quizzdisplay.php");
             </div>
         </form>
     </section>
-    </div>
-
+    <div style=" position:absolute ;  bottom:1rem; margin-left:40rem; border: 1px solid orange; background-color:orange; border-radius: 20px; height: 10px; width:10px;"></div>
+  <div style=" position:absolute ;  bottom:1rem; margin-left:41rem; border: 1px solid orange; border-radius: 20px; height: 10px; width:10px;"></div>
+  <div style=" position:absolute ;  bottom:1rem; margin-left:39rem; border: 1px solid orange; border-radius: 20px; height: 10px; width:10px;"></div>
 
 </body>
-
 </html>
-
