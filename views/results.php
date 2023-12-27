@@ -58,41 +58,33 @@
         </script>
         <?php
 
-        if (isset($_SESSION['Resulte']) && !empty($_SESSION['Resulte'])) {
-        ?>
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-
-                        <tr>
-                            <th scope="col" class="px-6 py-3">Question ID</th>
-                            <th scope="col" class="px-6 py-3">Content Question</th>
-                            <th scope="col" class="px-6 py-3">Answer ID</th>
-                            <th scope="col" class="px-6 py-3">Content Answer</th>
-                            <th scope="col" class="px-6 py-3">Answer Description</th>
+if (isset($_SESSION['Resulte']) && !empty($_SESSION['Resulte'])) {
+    ?>
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Question</th>
+                        <th scope="col" class="px-6 py-3">Right Answer</th>
+                        <th scope="col" class="px-6 py-3"> Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($_SESSION['Resulte'] as $resulteData) :
+                        $contentQuestion = isset($resulteData['content_question']) ? $resulteData['content_question'] : '';
+                        $contentAnswer = isset($resulteData['content_rep']) ? $resulteData['content_rep'] : '';
+                        $answerDesc = isset($resulteData['answer_desc']) ? $resulteData['answer_desc'] : '';
+                    ?>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td class="px-6 py-4"><?= $contentQuestion ?></td>
+                            <td class="px-6 py-4"><?= $contentAnswer ?></td>
+                            <td class="px-6 py-4"><?= $answerDesc ?></td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        foreach ($_SESSION['Resulte'] as $resulteData) :
-                            $questionId = isset($resulteData['id_question']) ? $resulteData['id_question'] : '';
-                            $contentQuestion = isset($resulteData['content_question']) ? $resulteData['content_question'] : '';
-                            $answerId = isset($resulteData['id_rep']) ? $resulteData['id_rep'] : '';
-                            $contentAnswer = isset($resulteData['content_rep']) ? $resulteData['content_rep'] : '';
-                            $answerDesc = isset($resulteData['answer_desc']) ? $resulteData['answer_desc'] : '';
-                        ?>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <?= $questionId ?></th>
-                                <td class="px-6 py-4"><?= $contentQuestion ?></td>
-                                <td class="px-6 py-4"><?= $answerId ?></td>
-                                <td class="px-6 py-4"><?= $contentAnswer ?></td>
-                                <td class="px-6 py-4"><?= $answerDesc ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                </table>
-            </div>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
             
           
     <?PHP
