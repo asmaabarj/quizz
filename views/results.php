@@ -26,29 +26,36 @@
         <?php
         if($_SESSION["score"] < 70){?>
     
-<h1 class="text-white">Hi <?= $_SESSION["username"] ?> You Have Failed The Test with a Score Of : <?= $_SESSION["score"] ?> Point</h1>
-<p class="text-white">Good Luck Next Time</p>
+<h1 class="mt-14 text-white">Hi <?= $_SESSION["username"] ?><br><br> You Have Failed The Test with a Score Of : <?= $_SESSION["score"] ?> Point</h1>
+<p class="text-white"><br>Good Luck Next Time</p>
 
 <?php   } else{?>
 
 
-    <h1 class="text-white"> <?= $_SESSION["username"] ?> You Have Passed The Test with a Score Of : <?= $_SESSION["score"] ?>Point</h1>
-<p class="text-white">Good Job !!!!</p>
+    <h1 class="mt-10 text-white"> <?= $_SESSION["username"] ?><br><br> You Have Passed The Test with a Score Of : <?= $_SESSION["score"] ?>Point</h1>
+<p class="text-white"><br>Good Job !!!!</p>
 
 <?php }?>
+<div class="flex justify-center gap-4 mt-20">
         <form action="" method="post">
-            <button type="submit" name="correction" class="baorm group relative inline-block overflow-hidden rounded border outline-none mt-44   px-12 py-3  text-sm font-medium text-white hover:text-orange-600 focus:outline-none   ">
-                <span class="ease absolute left-0 top-0 h-0 w-0 border-t-2 border-orange-600 transition-all duration-200 group-hover:w-full"></span>
-                <span class="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-orange-600 transition-all duration-200 group-hover:h-full"></span>
-                <span class="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-orange-600 transition-all duration-200 group-hover:w-full"></span>
-                <span class="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-orange-600 transition-all duration-200 group-hover:h-full"></span>
+            <button type="submit" name="correction" class="baorm group relative inline-block overflow-hidden rounded border outline-none   px-12 py-3  text-sm font-medium text-white hover:text-orange-600 focus:outline-none   ">
+                <span class="ease absolute left-0 top-0 h-0 w-0 border-t-2 border-orange-400 transition-all duration-200 group-hover:w-full"></span>
+                <span class="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-orange-400 transition-all duration-200 group-hover:h-full"></span>
+                <span class="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-orange-400 transition-all duration-200 group-hover:w-full"></span>
+                <span class="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-orange-400 transition-all duration-200 group-hover:h-full"></span>
                 Correct
             </button>
         </form>
         <form action="index.php" post="post">
-                <button type="submit" name="clear" value="" class="text-white">Play Again</button>
+                <button type="submit" name="clear" class="baorm group relative inline-block overflow-hidden rounded border outline-none    px-12 py-3  text-sm font-medium text-white hover:text-orange-600 focus:outline-none   ">
+               
+                 <span class="ease absolute left-0 top-0 h-0 w-0 border-t-2 border-orange-400 transition-all duration-200 group-hover:w-full"></span>
+                <span class="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-orange-400 transition-all duration-200 group-hover:h-full"></span>
+                <span class="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-orange-400 transition-all duration-200 group-hover:w-full"></span>
+                <span class="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-orange-400 transition-all duration-200 group-hover:h-full"></span>
+                 Play Again</button>
             </form>
-
+            </div>
     </div>
     <?php
     if (isset($_POST["correction"])) {
@@ -61,7 +68,7 @@
 if (isset($_SESSION['Resulte']) && !empty($_SESSION['Resulte'])) {
     ?>
         <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-[80%] m-auto  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">Question</th>
@@ -89,7 +96,7 @@ if (isset($_SESSION['Resulte']) && !empty($_SESSION['Resulte'])) {
           
     <?PHP
         } else {
-            echo "No wrong answers recorded.";
+            echo '<p class="text-white">No wrong answers recorded.</p>';
         }
     }
     ?>
