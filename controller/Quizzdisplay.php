@@ -4,25 +4,36 @@ require_once("../service/ResponseService.php");
 require_once("../config/database.php");
 session_start();
 
+if (!isset($_SESSION["array"])) {
+    $_SESSION["array"] = [];
+}
+
 $Question = new Questionservice();
 $reponse = new ResponseService();
 $Questions = $Question->ShowQuestion();
-$randomQuestion = $Questions[array_rand($Questions)];
 
+if (count($_SESSION["array"]) == count($Questions)) {
+    $_SESSION["array"] = [];
+}
+
+$randomQuestion = null;
+
+do {
+    shuffle($Questions);
+    $randomQuestion = $Questions[array_rand($Questions)];
+} while (in_array($randomQuestion->getIdQuestion(), $_SESSION["array"]));
+
+print_r($_SESSION["array"]);
+
+$_SESSION["array"][] = $randomQuestion->getIdQuestion();
+
+$reponses = $reponse->ShowAnswer($randomQuestion->getIdQuestion());
 $reponses = $reponse->ShowAnswer($randomQuestion->getIdQuestion());
 if (!isset($_SESSION['answers'])) {
     $_SESSION['answers'] = array();
 }
 
-if (isset($_POST['selectedAnswer'])) {
-    $selectedAnswer = $_POST['selectedAnswer'];
 
-    $_SESSION['answers'][] = $selectedAnswer;
-    if (count($_SESSION['answers']) === 10) {
-        header('Location: results.php');
-        exit();
-    }
-}
 
 $questionNumber = count($_SESSION['answers']) + 1;
 $totalQuestions = 10;
@@ -58,7 +69,13 @@ if (isset($_POST['selectedAnswer']) && $_POST['selectedAnswer'] == 0) {
     $_SESSION['Resulte'][] = $resulteData;
 }
 
+if (isset($_POST['selectedAnswer'])) {
+    $selectedAnswer = $_POST['selectedAnswer'];
 
-
-
-?>
+    $_SESSION['answers'][] = $selectedAnswer;
+    if (count($_SESSION['answers']) === 10) {
+        unset($_SESSION["array"]);
+        header('Location: results.php');
+        exit();
+    }
+}

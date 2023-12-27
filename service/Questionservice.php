@@ -27,6 +27,7 @@ class QuestionService  {
 
             $questions[] = $question;
         }
+        shuffle($questions);
 
         return $questions;
     }

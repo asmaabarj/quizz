@@ -98,6 +98,7 @@ $_SESSION["username"] = $_POST["username"];
     <div class="mt-4 h-[10vh]">
         <ul id="progress-bar" class="progressbar">
             <?php
+            
             for ($i = 1; $i <= $totalQuestions; $i++) {
                 $class = ($i == $questionNumber) ? 'active' : '';
                 echo "<li class='$class'>Question $i</li>";
