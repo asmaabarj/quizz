@@ -23,7 +23,6 @@ do {
     $randomQuestion = $Questions[array_rand($Questions)];
 } while (in_array($randomQuestion->getIdQuestion(), $_SESSION["array"]));
 
-print_r($_SESSION["array"]);
 
 $_SESSION["array"][] = $randomQuestion->getIdQuestion();
 

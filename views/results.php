@@ -66,31 +66,27 @@
 
 if (isset($_SESSION['Resulte']) && !empty($_SESSION['Resulte'])) {
     ?>
-        <div class="relative overflow-x-auto">
-    <table class="w-[80%] m-auto  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">Question</th>
-                        <th scope="col" class="px-6 py-3">Right Answer</th>
-                        <th scope="col" class="px-6 py-3"> Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($_SESSION['Resulte'] as $resulteData) :
-                        $contentQuestion = isset($resulteData['content_question']) ? $resulteData['content_question'] : '';
-                        $contentAnswer = isset($resulteData['content_rep']) ? $resulteData['content_rep'] : '';
-                        $answerDesc = isset($resulteData['answer_desc']) ? $resulteData['answer_desc'] : '';
-                    ?>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="px-6 py-4"><?= $contentQuestion ?></td>
-                            <td class="px-6 py-4"><?= $contentAnswer ?></td>
-                            <td class="px-6 py-4"><?= $answerDesc ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+    <div class="relative overflow-x-auto" style="height: 70vh;">
+    <table style="height: calc(70vh - 2rem); overflow-y: auto;" class="w-[80%] m-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-fixed">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">Question</th>
+                <th scope="col" class="px-6 py-3">Right Answer</th>
+                <th scope="col" class="px-6 py-3">Description</th>
+            </tr>
+        </thead>
+        <tbody >
+            <?php foreach ($_SESSION['Resulte'] as $resulteData) : ?>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="px-6 py-4"><?= $resulteData['content_question'] ?? '' ?></td>
+                    <td class="px-6 py-4"><?= $resulteData['content_rep'] ?? '' ?></td>
+                    <td class="px-6 py-4"><?= $resulteData['answer_desc'] ?? '' ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
             
           
     <?PHP
